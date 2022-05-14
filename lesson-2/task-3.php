@@ -7,7 +7,7 @@ do {
     $numberFinger = (int)readline();
 } while ($numberFinger <= 0);
 
-if ($numberFinger % 8 === 1) {
+if ($numberFinger % 8 === 1) { //Цепочка if else антипаттерн, может лучше Switch?
     $matchFinger = "Большому пальцу";
 } elseif ($numberFinger % 8 === 2 || $numberFinger % 8 === 0) {
     $matchFinger = "Указательному пальцу";
