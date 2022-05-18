@@ -11,8 +11,8 @@ $q = 10;
 $minRange = 0;
 $maxRange = 15;
 
-for ($i = 0; $i < $q; $i++) {
-    $masRandom1[] = rand($minRange, $maxRange);
+for ($i = 0; $i < $q; $i++) {                      //Вы тут же генерируете и тут же перемножаете массивы, это не верный подход,
+    $masRandom1[] = rand($minRange, $maxRange);   // надо на вход алгоритма перемножения подавать уже готовые массивы. Не смешивайте.
     $masRandom2[] = rand($minRange, $maxRange);
     $result[] = $masRandom1[$i] * $masRandom2[$i];
 }

@@ -39,3 +39,6 @@ arsort($avgMarks);
 $groupMaxMark = array_key_first($avgMarks);
 
 echo $groupMaxMark;
+
+//$$nameGroup так а зачем, можем же массивами пользоваться.
+// А так вдруг будет существовать такая переменная и затрете ее, можно если внутри локальной фукнции.
