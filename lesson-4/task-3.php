@@ -65,3 +65,6 @@ function search(string $searchThing, array $searchArray): bool
 }
 
 echo search($thing, $box) ? 'true' : 'false';
+
+//Рекурсия верно. Логику можно упростить, не нравится что 2 раза return true, search и так bool возвращает.
+//return search($searchThing, $value)

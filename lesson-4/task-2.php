@@ -15,3 +15,8 @@ $aggregationData = function (array $numbers): array {
 };
 
 print_r($aggregationData($mas));
+
+//И даже ключи элементам подписали, только вот не сортировку надо было, а
+//'min' => min($numbers),
+//'max' => max($numbers),
+//Не усложняйте!

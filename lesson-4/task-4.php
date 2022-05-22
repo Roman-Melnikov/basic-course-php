@@ -11,3 +11,5 @@ $factorial = function (int $number) use (&$factorial): int {
 };
 
 echo $factorial($input);
+
+//Вот верно, изврат конечно, но нам надо понять принцип работы.

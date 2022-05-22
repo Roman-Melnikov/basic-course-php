@@ -14,3 +14,5 @@ $evenOdd = array_map($evenOddCheck, $mas);
 
 print_r($evenOdd);
 
+//Отлично что не стали функцию в array_map помещать, очень хорошо все читается. Тернарник то что нужно.
+

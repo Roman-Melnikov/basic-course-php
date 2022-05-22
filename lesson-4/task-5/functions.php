@@ -23,3 +23,13 @@ function div(int $x, int $y): string
 {
     return (string)($y !== 0 ? $x / $y : 'NULL');
 }
+
+//А почему string то возвращает? Матемаические функции же, надо float. 'NULL' надо чтобы null как тип вернуло через ?float
+//function div(float $x, float $y): ?float
+//{
+//return $y != 0 ? $x / $y : null;
+//}
+//
+//require_once 'functions.php'; вы же библиотечную подключаете, вдруг еще где то будете подключать
+//
+//Перед return $operation($x, $y) хорошо бы вызвать function_exists() проверку, мало ли что там ввели.
