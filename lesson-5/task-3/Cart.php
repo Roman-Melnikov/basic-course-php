@@ -52,3 +52,5 @@ class Cart
         $this->setTotalSum($totalSum);
     }
 }
+//class Cart в updateTotalSum переменная $totalSum в выражении не используется, очень осложнили строчку,
+// не нужно экономить место жертвуя читаемостью и расширяемостью.

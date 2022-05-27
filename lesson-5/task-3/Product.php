@@ -42,3 +42,4 @@ class Product
         $this->components = $components;
     }
 }
+//class Product в setComponents как то надо пересчитывать стоимость тогда.

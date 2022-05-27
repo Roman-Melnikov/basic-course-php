@@ -97,3 +97,4 @@ class Task
         $this->setDateDone();
     }
 }
+//class Task на $userнет геттера. Не надо readlineв конструктор! Это не его задача считывать данные.

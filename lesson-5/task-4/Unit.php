@@ -50,3 +50,4 @@ class Unit
         $otherUser->setLife($otherLife);
     }
 }
+//class Unit метод attack верно.
