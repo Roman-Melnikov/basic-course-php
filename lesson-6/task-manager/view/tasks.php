@@ -11,6 +11,7 @@
             <a href="?controller=task&isDone=<?= $task->getDescription() ?>">сделать выполненной</a>
         <?php endforeach ?>
     </ol>
+    <a href="?controller=security&action=logout">Выйти</a>
 <?php else: ?>
     <h2>Невыполненных задач нет</h2>
 <?php endif; ?>

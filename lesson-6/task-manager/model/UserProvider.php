@@ -5,7 +5,7 @@ require_once 'User.php';
 class UserProvider
 {
     private array $accounts = [
-      'Roma' => '12345',
+      'admin' => '123',
     ];
 
     public function getByUsernameAndPassword(?string $username, ?string $password): ?User

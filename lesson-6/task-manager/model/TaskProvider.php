@@ -4,7 +4,7 @@ require_once 'Task.php';
 
 class TaskProvider
 {
-    private array $tasks = [
+    private array $tasks = [             //нужно было сохранять задачи в сессии
         'Сходить в магазин' => true,
         'Погулять с собакой' => false,
         'Сделать домашку' => false,
@@ -21,8 +21,20 @@ class TaskProvider
         return count($undoneListArr) ? $undoneListArr : null;
     }
 
+    public function getTasks(): array
+    {
+        return $this->tasks;
+    }
+
+    public function setTasks(array $tasks): void
+    {
+        $this->tasks = $tasks;
+    }
+
     public function addTask(string $description): void
     {
-        $this->tasks[$description] = false;
+        $newTasks = $this->getTasks();
+        $newTasks[$description] = false;
+        $this->setTasks($newTasks);
     }
 }
