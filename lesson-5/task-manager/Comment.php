@@ -1,5 +1,8 @@
 <?php
 
+use model\Task;
+use model\User;
+
 class Comment
 {
     private User $author;

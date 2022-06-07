@@ -1,5 +1,7 @@
 <?php
 
+use model\User;
+
 class Task
 {
     private string $description;

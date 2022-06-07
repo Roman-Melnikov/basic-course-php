@@ -1,5 +1,8 @@
 <?php
 
+use model\Task;
+use model\User;
+
 require_once 'User.php';
 require_once 'Task.php';
 require_once 'Comment.php';
