@@ -1,40 +1,35 @@
 <?php
-
 require_once 'Task.php';
 
 class TaskProvider
 {
-    private array $tasks = [             //нужно было сохранять задачи в сессии
-        'Сходить в магазин' => true,
-        'Погулять с собакой' => false,
-        'Сделать домашку' => false,
-    ];
+    private PDO $pdo;
 
-    public function getUndoneList(): ?array
+    public function __construct(PDO $pdo)
     {
-        $undoneListArr = [];
-        foreach ($this->tasks as $index => $value) {
-            if ($value === false) {
-                $undoneListArr[] = new Task($index, $value);
-            }
+        $this->pdo = $pdo;
+    }
+
+    public function addTask(Task $task, int $user_id): bool
+    {
+        $statement = $this->pdo->prepare('INSERT INTO tasks (description, isDone, user_id) VALUES (:description, :isDone, :user_id)');
+        return $statement->execute(['description' => $task->getDescription(), 'isDone' => $task->isDone(), 'user_id' => $user_id]);
+    }
+
+    public function getUndoneList(int $id): ?array
+    {
+        $result = [];
+        $statement = $this->pdo->prepare('SELECT * FROM tasks WHERE isDone = "" AND user_id = ?');
+        $statement->execute([$id]);
+        while ($statement && $task = $statement->fetchObject(Task::class)) {
+            $result[] = $task;
         }
-        return count($undoneListArr) ? $undoneListArr : null;
+        return count($result) ? $result : null;
     }
 
-    public function getTasks(): array
+    public function isDone(int $id): bool
     {
-        return $this->tasks;
-    }
-
-    public function setTasks(array $tasks): void
-    {
-        $this->tasks = $tasks;
-    }
-
-    public function addTask(string $description): void
-    {
-        $newTasks = $this->getTasks();
-        $newTasks[$description] = false;
-        $this->setTasks($newTasks);
+        $statement = $this->pdo->prepare('UPDATE tasks SET isDone = true WHERE id = ?');
+        return $statement->execute([$id]);
     }
 }

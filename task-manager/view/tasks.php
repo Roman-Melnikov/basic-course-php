@@ -8,7 +8,7 @@
     <ol>
         <?php foreach ($undoneList as $task) : ?>
             <li><?= $task->getDescription() ?></li>
-            <a href="?controller=task&isDone=<?= $task->getDescription() ?>">сделать выполненной</a>
+            <a href="?controller=task&isDone=<?= $task->id ?>">сделать выполненной</a>
         <?php endforeach ?>
     </ol>
     <a href="?controller=security&action=logout">Выйти</a>
@@ -19,4 +19,5 @@
     <input type="text" name="addTask" placeholder="Опишите задачу"/>
     <input type="submit" value="Добавить"/>
 </form>
+<a href="?controller=home">Назад</a>
 </body>
