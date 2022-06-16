@@ -18,12 +18,9 @@ class TaskProvider
 
     public function getUndoneList(int $id): ?array
     {
-        $result = [];
         $statement = $this->pdo->prepare('SELECT * FROM tasks WHERE isDone = "" AND user_id = ?');
         $statement->execute([$id]);
-        while ($statement && $task = $statement->fetchObject(Task::class)) {
-            $result[] = $task;
-        }
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, Task::class);
         return count($result) ? $result : null;
     }
 

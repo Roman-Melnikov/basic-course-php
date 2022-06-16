@@ -12,10 +12,14 @@ if (isset($_POST['addTask']) && !empty($_POST['addTask'])) {
     $newTask->setDescription($_POST['addTask']);
     $newTask->setIsDone(false);
     $repository->addTask($newTask, $_SESSION['user']->getId());
+    header('Location: /?controller=task');
+    die();
 }
 
 if (isset($_GET['isDone'])) {
     $repository->isDone($_GET['isDone']);
+    header('Location: /?controller=task');
+    die();
 }
 
 $undoneList = $repository->getUndoneList($_SESSION['user']->getId());

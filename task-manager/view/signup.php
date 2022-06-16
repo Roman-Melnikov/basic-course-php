@@ -54,7 +54,7 @@
             <button class="w-75 btn btn-lg btn-primary mt-1" type="submit">Зарегистрироваться</button>
             <div class="mt-3 form-links">
                 <a href="/">Назад</a>
-                <a href="?controller=security">Войти</a>
+                <a href="/?controller=security">Войти</a>
             </div>
         </form>
     </div>
