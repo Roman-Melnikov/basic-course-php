@@ -9,24 +9,22 @@ $error = null;
 if (isset($_POST['name'], $_POST['username'], $_POST['password'])) {
     ['name' => $name, 'username' => $username, 'password' => $password] = $_POST;
     $userProvider = new UserProvider($pdo);
+    $user = new User($username);
+    $user->setName($name);
 
-    if ($userProvider->getByUsernameAndPassword($username, $password)) {
-        $error = 'Пользователь с указанными учетными данными уже существует';
-    } else {
-        $user = new User($username);
-        $user->setName($name);
+    try {
+        //Регистрация нового пользователя в БД.Если такой логин уже есть, то будет "выброшено" исключение.
+        $id = $userProvider->insertUser($user, $password);
 
-        //регистрация нового пользователя в БД
-        $userProvider->insertUser($user, $password);
-
-        //получение текущего пользователя с id из БД
-        $currentUser = $userProvider->getByUsernameAndPassword($username, $password);
-
-        $_SESSION['user'] = $currentUser;
+        //сохраняем в сессии не объект, а логин и id
+        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['user_id'] = $id;
+    } catch (Exception $exception) {
+        $error = $exception->getMessage();
     }
 }
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['username'])) {
     header('Location: /');
 }
 

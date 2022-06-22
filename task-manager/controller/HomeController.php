@@ -6,8 +6,8 @@ session_start();
 $pageHeader = 'Добро пожаловать';
 
 $username = null;
-if (isset($_SESSION['user'])) {
-    $username = $_SESSION['user']->getUsername();
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
 }
 
 require_once 'view/home.php';

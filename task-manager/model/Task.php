@@ -2,6 +2,7 @@
 
 class Task
 {
+    //добавить поле id
     private string $description;
     private bool $isDone;
 

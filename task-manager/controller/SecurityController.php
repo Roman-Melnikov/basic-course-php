@@ -5,7 +5,7 @@ $pdo = require 'db.php';
 session_start();
 
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
-    unset($_SESSION['user']);
+    session_destroy();
 }
 
 $error = null;
@@ -18,11 +18,13 @@ if (isset($_POST['username'], $_POST['password'])) {
     if ($user === null) {
         $error = 'Пользователь с указанными учетными данными не найден';
     } else {
-        $_SESSION['user'] = $user;
+        //сохранять в сессии не объект, а логин и id
+        $_SESSION['username'] = $user->getUsername();
+        $_SESSION['user_id'] = $user->getId();
     }
 }
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['username'])) {
     header('Location: /');
 }
 
