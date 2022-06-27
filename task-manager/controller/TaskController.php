@@ -1,0 +1,27 @@
+<?php
+require_once 'model/TaskProvider.php';
+require_once 'model/Task.php';
+require_once 'model/User.php';
+$pdo = require 'db.php';
+
+session_start();
+
+$repository = new TaskProvider($pdo);
+if (isset($_POST['addTask']) && !empty($_POST['addTask'])) {
+    $newTask = new Task();
+    $newTask->setDescription($_POST['addTask']);
+    $newTask->setIsDone(false);
+    $repository->addTask($newTask, $_SESSION['user']->getId());
+    header('Location: /?controller=task');
+    die();
+}
+
+if (isset($_GET['isDone'])) {
+    $repository->isDone($_GET['isDone']);
+    header('Location: /?controller=task');
+    die();
+}
+
+$undoneList = $repository->getUndoneList($_SESSION['user']->getId());
+
+require_once 'view/tasks.php';
