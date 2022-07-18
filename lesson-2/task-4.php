@@ -16,3 +16,24 @@ for ($i = 1; $i <= 100; $i++) {
     }
     echo "$output\n";
 }
+
+/*сделал вариант, когда операция деления не повторяется
+//for ($i = 1; $i <= 100; $i++) {
+//    $fizz = $i % 3 === 0;
+//    $buzz = $i % 5 === 0;
+//
+//    switch (true) {
+//        case $fizz && $buzz:
+//            $output = 'FizzBuzz';
+//            break;
+//        case $fizz:
+//            $output = 'Fizz';
+//            break;
+//        case $buzz:
+//            $output = 'Buzz';
+//            break;
+//        default:
+//            $output = $i;
+//    }
+//    echo "$output\n";
+//}
